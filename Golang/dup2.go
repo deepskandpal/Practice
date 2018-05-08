@@ -1,4 +1,4 @@
-//Dup prints the count and text of lines that appear more than once 
+//Dup prints the count and text of lines that appear more than once
 //in the input it reads from stdin or from a list of named files
 package main
 
@@ -26,7 +26,7 @@ func main(){
 	}
 	for line, n := range counts{
 		if n>1 {
-			fmt.Printf("%d\t%\n",n,line)
+			fmt.Printf("%d\t%s\n",n,line)
 		}
 	}
 }
