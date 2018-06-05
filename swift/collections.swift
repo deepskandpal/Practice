@@ -70,3 +70,119 @@ print(electronicstore)
 let oldval = electronicstore.updateValue(340000,forKey:"TV")
 print(oldval!)
 print(electronicstore)
+
+
+var quest = [
+  "fetch gemstone": [
+    "objective":"retrieve 5 gemstones",
+    "Hidden objective":"complete the task in 5 minutes"
+  ]
+]
+
+var questdictionary = quest["fetch gemstone"]?["objective"]
+print(questdictionary!)
+
+var emptyset = Set<Int> ()
+var emptyset2 :Set<Int> = []
+
+var activeset:Set = ["firefly" ,"the joker" ,"black mask" ,"bane"]
+print(activeset)
+print(activeset.count)
+print(activeset.isEmpty)
+activeset.insert("poisonivy")
+print(activeset)
+activeset.remove("firefly")
+print(activeset)
+print(activeset.sorted())
+
+for (index) in activeset{
+  print(index)
+}
+for (index) in activeset.sorted(){
+  print(index)
+}
+
+var batmanVillans:Set = ["the joker", "bane","rache-al-gul","catwoman"]
+var batmanAllies:Set = ["Robin", "jim gorden","catwoman","Oracle","Alfred"]
+//print(batmanAllies.intersecton(batmanVillans))
+//print(batmanVillans.intersecton(batmanAllies))
+print(batmanAllies.symmetricDifference(batmanVillans))
+print(batmanAllies.union(batmanVillans))
+print(batmanAllies.subtract(batmanVillans))
+
+
+var shopItemsArray = ["vegetable","fruit","utensil"]
+print(shopItemsArray)
+var shopItemsDict = ["vegetable":10,"fruit":20,"utensil":30]
+print(shopItemsDict)
+print(shopItemsArray.contains("mobile"))
+shopItemsArray.insert("mobile" , at :3)
+print(shopItemsArray)
+
+var hp = 96
+var bhp = 100
+if hp >= bhp {
+  print("hp is greater than bhp")
+}
+
+else if hp <= 51 {
+  print("grab some health")
+}
+
+else {
+  print("hp is between 51 and 99")
+}
+
+var itemGathered:String?
+
+if let item = itemGathered {
+  print("congrats you found an item \(item)")
+}
+else {
+  print("sorry no item found")
+}
+
+class Adventurer {
+  var equippedWeapon: Weapon?
+}
+
+class Weapon {
+  var name:String = "Fists"
+}
+
+let newAdventurer=Adventurer()
+newAdventurer.equippedWeapon = Weapon()
+
+if let weaponName = newAdventurer.equippedWeapon?.name {
+  print("your new weapon is \(weaponName)")
+}
+else  {
+  print("you have no new weapon")
+}
+
+var carTypes = ["Sedan" , "Suv" , "hatchBack"]
+var customer = "Hello customer"
+
+for typeCars in carTypes {
+  print(typeCars)
+}
+
+for char in customer {
+  print(char)
+}
+
+for item in 1...5 {
+  print(item)
+}
+
+var hitCount = 5
+for number in 1..<hitCount {
+  print(number)
+}
+
+var playerHp = 5
+
+while playerHp > 0 {
+  playerHp -= 1
+  print("player hp at \(playerHp)")
+}
