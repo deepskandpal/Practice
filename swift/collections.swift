@@ -179,85 +179,86 @@ var hitCount = 5
 for number in 1..<hitCount {
   print(number)
 }
-func saluteHunter () {
-    print("hello there intrepid hunter")
-}
-
-saluteHunter()
-
-func findNearestHunter() -> String{
-    return "Argus"
-    
-}
-
-var nearMe = findNearestHunter()
-
-func equippedItems (armour : String) -> Bool {
-    print("\(armour) successfully equipped")
-    return true
-}
-
-equippedItems(armour: "Deamon vest")
-
-
-func requestItemTrade (myItem : String) -> (yourItem: String, value :Int){
- print("can I trade my \(myItem)?")
- return ("Sacred Sheild " , 300)
-}
-
-let tradeItem = requestItemTrade(myItem: "Old Hat")
-
-print("recieved your item \(tradeItem.yourItem), valued at \(tradeItem.value)\n")
-
-func requestTrade (item : String)-> String? {
-    let returnItem = "garbage sword"
-    return returnItem
-}
-if let item = requestTrade(item: "Spike Boots"){
-    print("\(item) recieved")
-    
-}
-    else {
-        print("trade fell through\n")
-    }
-
-func setupArenaMatch (level:String = "fire Marshes" , noOfOponents:Int = 2) {
-    print("your arena match will take place in \(level) between \(noOfOponents) players")
-}
-
-setupArenaMatch()
-setupArenaMatch(level : "Poison Flats" ,noOfOponents: 5)
-
-func attack () {
-    print("attackinh")
-    
-}
-
-func attack (damage :Int) {
-    print("attacking for \(damage) damage")
-}
-
-func attack (damage:Double , weapon: String) -> Bool {
-    print("\(damage) done to enemy with \(weapon)")
-    return true
-}
-
-attack()
-attack(damage: 35)
-attack(damage: 45, weapon:"Hammer")
-
-func computeBonusDamage (damage:Int) -> Int {
-    return damage+1
-}
-
-func dealDamage(baseDamage:Int,computeFunc:(Int)->Int) {
-    let bonus = computeFunc(baseDamage)
-    print("base damage \(baseDamage)\n \(bonus) \n\n  \(bonus + baseDamage) total damage dealt to the enemy")
-}
 
 var playerHp = 5
 
 while playerHp > 0 {
   playerHp -= 1
   print("player hp at \(playerHp)")
+}
+
+repeat {
+   playerHp -= 1
+   print("playerHp at \(playerHp)")
+} while playerHp >= 0
+
+/* var health:Int , ammo:Int = 92 , 40
+
+switch (health,ammo) {
+case (0,0):
+  print("I'm sorry to tell you, you're not alive")
+
+case (24...50,34...50) :
+  print("Did someone hit you recently")
+
+case (50...90,50...90):
+  print("you are in a fightable position")
+
+default:
+    print("You are fine")
+}
+*/
+
+func computeBonusDamage (damage:Int) -> Int {
+  return damage*4
+}
+
+func dealDamage (baseDamage:Int, computeFunc:(Int)->Int) {
+  let bonus = computeFunc(baseDamage)
+  print("base damage \(baseDamage)\n bonus damage \(bonus) \n\n \(bonus + baseDamage) total damage ")
+}
+
+dealDamage(baseDamage:23,computeFunc:computeBonusDamage)
+
+
+var closureDeclaration: ()->() = {}
+
+var saluteHunter = {(parameterString: String) -> Void in
+ print(parameterString)
+}
+
+saluteHunter("Hello Hunter")
+
+
+var saluteHunterShortHand :(String)->String = { message in
+  return "\(message) swift!"
+}
+
+saluteHunterShortHand("Hello ")
+
+func fetchClosestHunter(closure :([String]) -> Void) {
+  let hunters = ["Morgan","Robert","Harrsion"]
+  closure (hunters)
+}
+
+fetchClosestHunter {(hunters) in
+ for hunter in hunters {
+   print("hunter->\(hunter)")
+ }
+}
+
+typealias AttackTuple = (String , Int ,Bool)
+var sunStrike:AttackTuple= ("SunStrike",35,false)
+
+typealias ArrayClosure   = ([Int]) -> Void
+
+func returnAttack ()-> AttackTuple{
+  return("HammerSweep",22,true)
+}
+
+print(returnAttack())
+
+func fetchPlayerScores (closure:ArrayClosure) {
+  let scores = [934,222,101]
+  closure(scores)
 }
