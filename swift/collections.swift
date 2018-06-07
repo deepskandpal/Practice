@@ -304,3 +304,38 @@ var advent = adventurer(name:"Harrison")
 var Ranger = ranger(name:"Steven",advantage:"Stealth")
 advent.attack(damage:40)
 Ranger.attack(damage:94)
+struct Level {
+    //instance properites
+    
+    let levelId:Int
+    var levelObjective:String
+    
+    //optional
+    var hiddenArea:String?
+    
+    //computation properties
+    var leveDescritopn:String{
+        return "Level ID :\(levelId)->Level Objective :\(levelObjective)"
+    }
+}
+
+var dungeon = Level(levelId: 1, levelObjective: "Clear the bigboss", hiddenArea: nil)
+
+print(dungeon.leveDescritopn)
+
+struct level {
+    var objective = ["find the lost cat","collect all gemsstone","defeat the bigboss"]
+    func queryObjective(){
+        for (index, objective) in objective.enumerated(){
+            print("\(index): \(objective)")
+            }
+    }
+        mutating func completeObjective (index:Int) {
+            objective.remove(at: index)
+        }
+}
+var marshLands = level()
+marshLands.completeObjective(index: 0)
+marshLands.queryObjective()
+
+
