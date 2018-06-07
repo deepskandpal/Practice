@@ -337,5 +337,69 @@ struct level {
 var marshLands = level()
 marshLands.completeObjective(index: 0)
 marshLands.queryObjective()
+enum armourType {
+    case Heavy
+    case Medium
+    case Light
+    
+}
+
+enum weaponType {
+    case sword, Hammer, Fists
+}
+
+
+var currentArmour = armourType.Heavy
+
+print("you currently have \(currentArmour) armour equipped")
+print("your armour type is at position \(currentArmour.hashValue) in the enum")
+
+enum NPC:String {
+    case  Villager = "Common to villages not much usefull info"
+    case  Cheif = " one per village, will have quest info"
+    case  Blacksmith = "No limit per village, will make you cool stuff"
+}
+
+var blacksmith = NPC.Blacksmith
+print(blacksmith.rawValue)
+
+enum PlayerState {
+    case Alive
+    case KD (restartToLevel:Int)
+    case Unkown (debug:String)
+}
+
+var currentState = PlayerState.KD(restartToLevel: 1)
+
+switch currentState {
+    
+case .Alive:
+    print("I'm Still here")
+case .KD(let restartToLevel):
+    print("Woops, You will have to start again at leve \(restartToLevel)")
+case .Unkown(let debug):
+    print("Sorry , we are experiencing some difficulties :\(debug)")
+}
+
+
+protocol Nameable {
+    var firstName : String {get}
+    var lastName  : String {get set}
+    func  createFullName() -> String
+}
+
+extension Nameable {
+    func createFullName() -> String {
+        return "\(firstName) \(lastName) Loves Swift 4"
+    }
+}
+
+struct Player : Nameable{
+    var firstName: String
+    var lastName: String
+}
+
+let knewPlayer = Player(firstName: "Harrison", lastName: "Ferrone")
+print(knewPlayer.createFullName())
 
 
