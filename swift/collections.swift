@@ -248,7 +248,7 @@ fetchClosestHunter {(hunters) in
 }
 
 typealias AttackTuple = (String , Int ,Bool)
-var sunStrike:AttackTuple= ("SunStrike",35,false)
+var sunStrike:AttackTuple = ("SunStrike",35,false)
 
 typealias ArrayClosure   = ([Int]) -> Void
 
@@ -262,79 +262,45 @@ func fetchPlayerScores (closure:ArrayClosure) {
   let scores = [934,222,101]
   closure(scores)
 }
-func saluteHunter () {
-    print("hello there intrepid hunter")
+
+fetchPlayerScores { (scores) in
+ print("Top scores")
+ for score in scores {
+   print(score)
+ }
 }
 
-saluteHunter()
+class adventurer {
+  var name:String
+  static var credo = " Defend the helpless"
 
-func findNearestHunter() -> String{
-    return "Argus"
-    
+  init(name:String) {
+      self.name = name
+  }
+
+  //Instance method
+
+  func attack (damage:Int) {
+    print("Attacking for \(damage) hit points! ")
+  }
+  //type method
+  static func printCredo(){
+    print(credo)
+  }
 }
 
-var nearMe = findNearestHunter()
-
-func equippedItems (armour : String) -> Bool {
-    print("\(armour) successfully equipped")
-    return true
+class ranger : adventurer {
+  var classAdvantage :String
+  init(name:String, advantage:String) {
+      self.classAdvantage = advantage
+      super.init(name:name)
+      }
+  override func attack (damage:Int) {
+     print("ranger attack for \(damage)")
+     }
 }
 
-equippedItems(armour: "Deamon vest")
-
-
-func requestItemTrade (myItem : String) -> (yourItem: String, value :Int){
-    print("can I trade my \(myItem)?")
-    return ("Sacred Sheild " , 300)
-}
-
-let tradeItem = requestItemTrade(myItem: "Old Hat")
-
-print("recieved your item \(tradeItem.yourItem), valued at \(tradeItem.value)\n")
-
-func requestTrade (item : String)-> String? {
-    let returnItem = "garbage sword"
-    return returnItem
-}
-if let item = requestTrade(item: "Spike Boots"){
-    print("\(item) recieved")
-    
-}
-else {
-    print("trade fell through\n")
-}
-
-func setupArenaMatch (level:String = "fire Marshes" , noOfOponents:Int = 2) {
-    print("your arena match will take place in \(level) between \(noOfOponents) players")
-}
-
-setupArenaMatch()
-setupArenaMatch(level : "Poison Flats" ,noOfOponents: 5)
-
-func attack () {
-    print("attackinh")
-    
-}
-
-func attack (damage :Int) {
-    print("attacking for \(damage) damage")
-}
-
-func attack (damage:Double , weapon: String) -> Bool {
-    print("\(damage) done to enemy with \(weapon)")
-    return true
-}
-
-attack()
-attack(damage: 35)
-attack(damage: 45, weapon:"Hammer")
-
-func computeBonusDamage (damage:Int) -> Int {
-    return damage+1
-}
-
-func dealDamage(baseDamage:Int,computeFunc:(Int)->Int) {
-    let bonus = computeFunc(baseDamage)
-    print("base damage \(baseDamage)\n \(bonus) \n\n  \(bonus + baseDamage) total damage dealt to the enemy")
-}
-
+var advent = adventurer(name:"Harrison")
+var Ranger = ranger(name:"Steven",advantage:"Stealth")
+//adventurer.attack(damage:40)
+//ranger.attack(damage:94)
