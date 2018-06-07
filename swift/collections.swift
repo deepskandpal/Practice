@@ -302,5 +302,5 @@ class ranger : adventurer {
 
 var advent = adventurer(name:"Harrison")
 var Ranger = ranger(name:"Steven",advantage:"Stealth")
-//adventurer.attack(damage:40)
-//ranger.attack(damage:94)
+advent.attack(damage:40)
+Ranger.attack(damage:94)
