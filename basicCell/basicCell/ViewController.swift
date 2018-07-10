@@ -9,22 +9,18 @@
 import UIKit
 import SDWebImage
 
-private let refreshControl =  UIRefreshControl()
-
 class ViewController: UITableViewController {
     var newsItem = [[String:String]]()
-    
-    if #available(iOS 10.0, *) {
-    .refreshControl = refreshControl
-    } else {
-    addSubview(refreshControl)
-    }
+    let refresh = UIRefreshControl()
+    setupActi
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "tableCell")
         let url:String
         navigationItem.title = "NY Times Most Popular"
+        refresh.addTarget(self, action: #selector(newsData(_:)), for: .valueChanged)
+        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
         url = "https://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=1bdd7e3e3c9b4e2aba6689c50f43b6b0"
         if let url = URL(string: url) {
             if let data = try?String (contentsOf: url){
@@ -33,6 +29,9 @@ class ViewController: UITableViewController {
                     parse(json: json)
                 }
             }
+            tableView.reloadData()
+            self.refresh.endRefreshing()
+            self.activityIndicatorView.stopAnimating()
         }
     }
     func parse(json: JSON) {
@@ -47,14 +46,30 @@ class ViewController: UITableViewController {
         }
         tableView.reloadData()
     }
-    
 
+  @objc private func newsData(_ sender: Any) {
+        fetchData()
+    }
+    
+    private func fetchData(){
+        let url:String
+        url = "https://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=1bdd7e3e3c9b4e2aba6689c50f43b6b0"
+        if let url = URL(string: url) {
+            if let data = try?String (contentsOf: url){
+                let json = JSON(parseJSON: data)
+                if json["status"] == "OK" {
+                    parse(json: json)
+                }
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
 }
+
 
 extension ViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
