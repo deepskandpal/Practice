@@ -21,7 +21,6 @@ class detailViewController: UIViewController{
         guard url != nil else {return}
         let newurl = URL(string: url!)!
         print(newurl)
-        
         webView.load(URLRequest(url: newurl))
     }
     

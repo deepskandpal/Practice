@@ -11,16 +11,16 @@ import SDWebImage
 
 class ViewController: UITableViewController {
     var newsItem = [[String:String]]()
-    let refresh = UIRefreshControl()
-    setupActi
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "tableCell")
+        tableView.register(nib, forCellReuseIdentifier: "tableViewCell")
         let url:String
         navigationItem.title = "NY Times Most Popular"
-        refresh.addTarget(self, action: #selector(newsData(_:)), for: .valueChanged)
-        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl?.addTarget(self, action: #selector(refreshNewsData(_:)), for: .valueChanged)
+        refreshControl?.backgroundColor = UIColor.lightGray
         url = "https://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=1bdd7e3e3c9b4e2aba6689c50f43b6b0"
         if let url = URL(string: url) {
             if let data = try?String (contentsOf: url){
@@ -30,10 +30,9 @@ class ViewController: UITableViewController {
                 }
             }
             tableView.reloadData()
-            self.refresh.endRefreshing()
-            self.activityIndicatorView.stopAnimating()
         }
     }
+    
     func parse(json: JSON) {
         for result in json["results"].arrayValue {
             let title = result["title"].stringValue
@@ -46,12 +45,12 @@ class ViewController: UITableViewController {
         }
         tableView.reloadData()
     }
-
-  @objc private func newsData(_ sender: Any) {
-        fetchData()
+   
+    @objc private func refreshNewsData(_ sender: Any) {
+        fetchNewsData()
     }
-    
-    private func fetchData(){
+ 
+   func fetchNewsData() {
         let url:String
         url = "https://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/7.json?api-key=1bdd7e3e3c9b4e2aba6689c50f43b6b0"
         if let url = URL(string: url) {
@@ -61,15 +60,17 @@ class ViewController: UITableViewController {
                     parse(json: json)
                 }
             }
+            tableView.reloadData()
+            self.refreshControl?.endRefreshing()
         }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
 }
-
 
 extension ViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,12 +79,10 @@ extension ViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let newsItems = newsItem[indexPath.row]
-        let cell:TableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "tableCell") as! TableViewCell
-      //  let url = URL(string: "https://static01.nyt.com/images/2018/07/02/world/02mexico-top/02mexico-top-thumbStandard.jpg")
-        cell.header.text = newsItems["title"]
-        cell.abstract.text = newsItems["abstract"]
-        cell.date.text = newsItems["date"]
+        let cell:TableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "tableViewCell") as! TableViewCell
+        cell.heading.text = newsItems["title"]
         cell.byLine.text = newsItems["byline"]
+        cell.date.text =  newsItems["date"]
         return cell
     }
     

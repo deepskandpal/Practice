@@ -10,11 +10,11 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
-    @IBOutlet weak var photo: UIImageView!
+    
     @IBOutlet weak var byLine: UILabel!
-    @IBOutlet weak var abstract: UILabel!
-    @IBOutlet weak var header: UILabel!
+   
     @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var heading: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
