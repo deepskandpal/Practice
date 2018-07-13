@@ -20,45 +20,55 @@
                 <rect key="frame" x="0.0" y="0.0" width="319" height="105.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="heading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXM-3X-IxK">
-                        <rect key="frame" x="18" y="11" width="285" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="heading" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXM-3X-IxK">
+                        <rect key="frame" x="51" y="11" width="262" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Line" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjG-ky-G99">
-                        <rect key="frame" x="78" y="50" width="86" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="86" id="2Ig-bs-WiZ"/>
-                            <constraint firstAttribute="height" constant="17" id="Hy2-c8-ZXt"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Line" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjG-ky-G99">
+                        <rect key="frame" x="51" y="43" width="252" height="28"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.25664133519999999" green="0.26331095469999999" blue="0.26152694209999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBs-Ax-yRK">
-                        <rect key="frame" x="226" y="74" width="88" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBs-Ax-yRK">
+                        <rect key="frame" x="249" y="79" width="61" height="24"/>
                         <viewLayoutGuide key="safeArea" id="hIm-Dk-o8I"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kv2-hc-XOi">
+                        <rect key="frame" x="4" y="29" width="39" height="37"/>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="SXM-3X-IxK" firstAttribute="top" secondItem="ZCk-85-ZoH" secondAttribute="topMargin" id="4tP-ZX-bRG"/>
-                    <constraint firstItem="SXM-3X-IxK" firstAttribute="trailing" secondItem="ZCk-85-ZoH" secondAttribute="trailingMargin" id="Ho3-vY-hff"/>
-                    <constraint firstItem="MjG-ky-G99" firstAttribute="leading" secondItem="ZCk-85-ZoH" secondAttribute="leadingMargin" constant="62" id="Iqi-hX-OPN"/>
-                    <constraint firstItem="MjG-ky-G99" firstAttribute="top" secondItem="SXM-3X-IxK" secondAttribute="bottom" constant="22" id="acd-q9-8ZA"/>
-                    <constraint firstItem="SXM-3X-IxK" firstAttribute="leading" secondItem="ZCk-85-ZoH" secondAttribute="leadingMargin" constant="2" id="ouU-n2-Agv"/>
+                    <constraint firstItem="MjG-ky-G99" firstAttribute="trailing" secondItem="ZCk-85-ZoH" secondAttribute="trailingMargin" id="7tM-wp-ce5"/>
+                    <constraint firstAttribute="trailing" secondItem="XBs-Ax-yRK" secondAttribute="trailing" constant="9" id="9cU-DL-VPO"/>
+                    <constraint firstItem="SXM-3X-IxK" firstAttribute="top" secondItem="ZCk-85-ZoH" secondAttribute="top" constant="11" id="AQG-xT-4mo"/>
+                    <constraint firstItem="kv2-hc-XOi" firstAttribute="leading" secondItem="ZCk-85-ZoH" secondAttribute="leading" constant="4" id="GzK-qE-4Bd"/>
+                    <constraint firstItem="MjG-ky-G99" firstAttribute="leading" secondItem="kv2-hc-XOi" secondAttribute="trailing" constant="8" id="Hdu-oD-YbM"/>
+                    <constraint firstAttribute="trailing" secondItem="kv2-hc-XOi" secondAttribute="trailing" constant="276" id="Iri-Vy-AZP"/>
+                    <constraint firstItem="MjG-ky-G99" firstAttribute="top" secondItem="SXM-3X-IxK" secondAttribute="bottom" constant="8" id="Kor-sG-4qu"/>
+                    <constraint firstItem="XBs-Ax-yRK" firstAttribute="leading" secondItem="ZCk-85-ZoH" secondAttribute="leading" constant="249" id="NcU-xC-MAb"/>
+                    <constraint firstAttribute="bottom" secondItem="XBs-Ax-yRK" secondAttribute="bottom" constant="2.5" id="PMz-51-7GY"/>
+                    <constraint firstAttribute="trailing" secondItem="SXM-3X-IxK" secondAttribute="trailing" constant="6" id="ejd-ks-nZd"/>
+                    <constraint firstItem="kv2-hc-XOi" firstAttribute="top" secondItem="ZCk-85-ZoH" secondAttribute="top" constant="29" id="fzN-tH-qRh"/>
+                    <constraint firstAttribute="bottom" secondItem="SXM-3X-IxK" secondAttribute="bottom" constant="70.5" id="gwN-Pi-bmQ"/>
+                    <constraint firstItem="SXM-3X-IxK" firstAttribute="leading" secondItem="kv2-hc-XOi" secondAttribute="trailing" constant="8" id="haB-CJ-Ipb"/>
+                    <constraint firstItem="XBs-Ax-yRK" firstAttribute="top" secondItem="ZCk-85-ZoH" secondAttribute="top" constant="79" id="tz1-fl-w96"/>
+                    <constraint firstAttribute="bottom" secondItem="kv2-hc-XOi" secondAttribute="bottom" constant="39.5" id="ugy-tp-rNX"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="MjG-ky-G99" secondAttribute="bottom" constant="24" id="ync-95-bC1"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="byLine" destination="MjG-ky-G99" id="ehT-Ua-yi9"/>
                 <outlet property="date" destination="XBs-Ax-yRK" id="IsL-zr-oUK"/>
                 <outlet property="heading" destination="SXM-3X-IxK" id="xm7-mO-ZcR"/>
+                <outlet property="photo" destination="kv2-hc-XOi" id="ARz-OU-22L"/>
             </connections>
-            <point key="canvasLocation" x="-365" y="114"/>
+            <point key="canvasLocation" x="-375.5" y="116"/>
         </tableViewCell>
     </objects>
 </document>

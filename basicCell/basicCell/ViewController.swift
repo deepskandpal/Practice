@@ -48,6 +48,9 @@ class ViewController: UITableViewController {
    
     @objc private func refreshNewsData(_ sender: Any) {
         fetchNewsData()
+        tableView.reloadData()
+        self.refreshControl?.endRefreshing()
+        
     }
  
    func fetchNewsData() {
@@ -60,8 +63,7 @@ class ViewController: UITableViewController {
                     parse(json: json)
                 }
             }
-            tableView.reloadData()
-            self.refreshControl?.endRefreshing()
+            
         }
     }
     
@@ -79,10 +81,12 @@ extension ViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let newsItems = newsItem[indexPath.row]
+        let newUrl = URL(string: "https://static01.nyt.com/images/2018/06/29/us/politics/29DC-KENNEDY-01sub/29DC-KENNEDY-01sub-thumbStandard.jpg")
         let cell:TableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "tableViewCell") as! TableViewCell
         cell.heading.text = newsItems["title"]
         cell.byLine.text = newsItems["byline"]
         cell.date.text =  newsItems["date"]
+        cell.photo.sd_setImage(with:newUrl, placeholderImage: nil)
         return cell
     }
     
