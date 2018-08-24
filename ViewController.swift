@@ -1,30 +1,27 @@
 //
 //  ViewController.swift
-//  videoPlayingApp
+//  videoWithSpeechEngine
 //
-//  Created by Deepanshu Kandpal  on 19/07/18.
+//  Created by Deepanshu Kandpal  on 23/08/18.
 //  Copyright © 2018 Deepanshu Kandpal . All rights reserved.
 //
 
 import UIKit
-import AVKit
-import AVFoundation
 
-class ViewController: UIViewController{
-    let videoPlayerController = AVPlayerViewController()
+class ViewController: UIViewController {
+    var videoBotView:MJioHelloJioVideoBot?
     
-    @IBOutlet weak var simpleButton: UIButton!
-    @IBOutlet weak var videoView: UIView!
-    override func viewDidLoad() {
-    super.viewDidLoad()
-    let videoURL = URL(string:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
-        videoPlayerController.showsPlaybackControls = false
-        videoPlayerController.player = AVPlayer(url: videoURL!)
-        videoView.addSubview(videoPlayerController.view)
-        videoPlayerController.view.frame = videoView.bounds
-        videoPlayerController.videoGravity = AVLayerVideoGravity.resizeAspectFill.rawValue;
-        videoPlayerController.player?.play()
+        override func viewDidLoad() {
+        super.viewDidLoad()
+            self.videoBotView = Bundle.main.loadNibNamed("videoBotView", owner: self, options: nil)?.first as? MJioHelloJioVideoBot
+        view.addSubview(videoBotView!)
+        videoBotView?.frame = view.bounds
+      let url = "https://s3.ap-south-1.amazonaws.com/jep-content/HelloJio/videos/rb/mp4/BTYQ1-Q9.mp4"
+        self.videoBotView?.configure(url:url)
+        self.videoBotView?.play()
+    
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -32,4 +29,6 @@ class ViewController: UIViewController{
 
 
 }
+
+
 
